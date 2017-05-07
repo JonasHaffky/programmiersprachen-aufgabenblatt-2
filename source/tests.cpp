@@ -2,7 +2,9 @@
 #include <catch.hpp>
 #include "vec2.hpp"
 #include "mat2.hpp"
-
+#include "color.hpp"
+#include "circle.hpp"
+#include "rectangle.hpp"
 
 TEST_CASE("describe_vec2","[vec2]")
 { Vec2 a{};
@@ -236,6 +238,54 @@ TEST_CASE("describe_det","[det]")
   REQUIRE(result2.x2==3.0f);
   REQUIRE(result2.y1==2.0f);
   REQUIRE(result2.y2==5.0f);
+}
+TEST_CASE("describe_color","[color]"){ 
+  Color a{1.0f};
+  Color b{{0.2f},{0.1f},{0.8f}};
+  Color c{};
+  REQUIRE(a.r==1.0f);
+  REQUIRE(a.g==1.0f);
+  REQUIRE(a.b==1.0f);
+  REQUIRE(b.r==0.2f);
+  REQUIRE(b.g==0.1f);
+  REQUIRE(b.b==0.8f);
+  REQUIRE(c.r==0.0f);
+  REQUIRE(c.g==0.0f);
+  REQUIRE(c.b==0.0f);
+}
+TEST_CASE("describe_circle","[circle]")
+{ Circle a{};
+  Vec2 b{{4.0f},{2.0f}};
+  float r=2.0f;
+  Circle c{b,r};
+  REQUIRE(a.getCenter().x_==0.0f);
+  REQUIRE(a.getCenter().y_==0.0f);
+  REQUIRE(a.getRadius()==0.0f);
+  REQUIRE(c.getCenter().x_==4.0f);
+  REQUIRE(c.getCenter().y_==2.0f);
+  REQUIRE(c.getRadius()==2.0f);
+}
+TEST_CASE("describe_rectangle","[rectangle]")
+{ Rectangle a{};
+  Vec2 b{{4.0f},{2.0f}};
+  Vec2 c{{6.0f},{8.0f}};
+  Rectangle d{b,c};
+  REQUIRE(a.getMin_().x_==0.0f);
+  REQUIRE(a.getMin_().y_==0.0f);
+  REQUIRE(a.getMax_().x_==0.0f);
+  REQUIRE(a.getMax_().y_==0.0f);
+  REQUIRE(a.getBottomright_().x_==0.0f);
+  REQUIRE(a.getBottomright_().y_==0.0f);
+  REQUIRE(a.getTopleft_().x_==0.0f);
+  REQUIRE(a.getTopleft_().y_==0.0f);
+  REQUIRE(d.getMin_().x_==4.0f);
+  REQUIRE(d.getMin_().y_==2.0f);
+  REQUIRE(d.getMax_().x_==6.0f);
+  REQUIRE(d.getMax_().y_==8.0f);
+  REQUIRE(d.getBottomright_().x_==6.0f);
+  REQUIRE(d.getBottomright_().y_==2.0f);
+  REQUIRE(d.getTopleft_().x_==4.0f);
+  REQUIRE(d.getTopleft_().y_==8.0f);
 }
  
 int main(int argc, char *argv[])
