@@ -7,6 +7,7 @@ class Circle{
         Circle(Vec2 const& ctr, float r);
         float getRadius() const;
         Vec2 getCenter() const;
+        float circumfrenceC()const;
     private:
         float radius_;
         Vec2 center_;

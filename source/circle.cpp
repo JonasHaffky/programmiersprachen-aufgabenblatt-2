@@ -1,4 +1,5 @@
 #include <iostream>
+#include <math.h>
 #include "circle.hpp"
     Circle::Circle():
         radius_{0.0f},
@@ -17,3 +18,7 @@
     }
     float Circle:: getRadius() const{return radius_;}
     Vec2 Circle:: getCenter() const{return center_;}
+    float Circle:: circumfrenceC()const{
+        float result=2*M_PI*radius_;
+        return result;
+    }

@@ -264,6 +264,7 @@ TEST_CASE("describe_circle","[circle]")
   REQUIRE(c.getCenter().x_==4.0f);
   REQUIRE(c.getCenter().y_==2.0f);
   REQUIRE(c.getRadius()==2.0f);
+  REQUIRE(c.circumfrenceC()==Approx(12.566f).epsilon(0.01));
 }
 TEST_CASE("describe_rectangle","[rectangle]")
 { Rectangle a{};
@@ -286,6 +287,7 @@ TEST_CASE("describe_rectangle","[rectangle]")
   REQUIRE(d.getBottomright_().y_==2.0f);
   REQUIRE(d.getTopleft_().x_==4.0f);
   REQUIRE(d.getTopleft_().y_==8.0f);
+  REQUIRE(d.circumfrenceR()==16.0f);
 }
  
 int main(int argc, char *argv[])

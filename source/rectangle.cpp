@@ -16,3 +16,7 @@
     Vec2 Rectangle:: getMax_() const{return max_;}
     Vec2 Rectangle:: getBottomright_() const{return bottomright_;}
     Vec2 Rectangle:: getTopleft_() const{return topleft_;}
+    float Rectangle:: circumfrenceR()const{
+        float result=(((bottomright_.x_-min_.x_)+(max_.y_-bottomright_.y_))*2);
+        return result;
+    }

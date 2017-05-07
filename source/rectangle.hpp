@@ -9,6 +9,7 @@ class Rectangle{
         Vec2 getMax_() const;
         Vec2 getBottomright_() const;
         Vec2 getTopleft_() const;
+        float circumfrenceR()const;
     private:
         Vec2 min_;
         Vec2 max_;
