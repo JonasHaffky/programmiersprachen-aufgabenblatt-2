@@ -2,9 +2,9 @@
 # define VEC2_HPP
 // Vec2 class definition
 struct Vec2{
-// Constructors
 float x_ ;
 float y_ ;
+// Constructors
 Vec2();
 Vec2(float a, float b);
 Vec2(Vec2 const& v);

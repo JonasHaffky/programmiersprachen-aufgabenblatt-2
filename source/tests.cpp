@@ -1,6 +1,8 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
 #include "vec2.hpp"
+#include "mat2.hpp"
+
 
 TEST_CASE("describe_vec2","[vec2]")
 { Vec2 a{};
@@ -155,9 +157,87 @@ TEST_CASE("describe_operator*2","[operator*2]")
   REQUIRE(temp_3.x_==-1.2f);
   REQUIRE(temp_3.y_==0.4f);
 }
-
-
-
+TEST_CASE("describe_mat2","[mat2]")
+{ Mat2 a{};
+  Mat2 b{{4.2f},{2.1f},{3.2f},{5.5f}};
+  REQUIRE(a.x1==1.0f);
+  REQUIRE(a.x2==0.0f);
+  REQUIRE(a.y1==0.0f);
+  REQUIRE(a.y2==1.0f);
+  REQUIRE(b.x1==4.2f);
+  REQUIRE(b.x2==2.1f);
+  REQUIRE(b.y1==3.2f);
+  REQUIRE(b.y2==5.5f);
+}
+TEST_CASE("describe_operator*=mat2","[operator*=mat2]")
+{ Mat2 a{{3.0f},{2.0f},{1.0f},{5.0f}};
+  Mat2 b{{4.0f},{2.0f},{3.0f},{5.0f}};
+  a.operator*=(b);
+  REQUIRE(a.x1==18.0f);
+  REQUIRE(a.x2==16.0f);
+  REQUIRE(a.y1==19.0f);
+  REQUIRE(a.y2==27.0f);
+}
+TEST_CASE("describe_operator*mat2","[operator*mat2]")
+{ Mat2 a{{3.0f},{2.0f},{1.0f},{5.0f}};
+  Mat2 b{{4.0f},{2.0f},{3.0f},{5.0f}};
+  Mat2 temp{operator*(a,b)};
+  REQUIRE(temp.x1==18.0f);
+  REQUIRE(temp.x2==16.0f);
+  REQUIRE(temp.y1==19.0f);
+  REQUIRE(temp.y2==27.0f);
+}
+TEST_CASE("describe_det","[det]")
+{ Mat2 a{{3.0f},{2.0f},{1.0f},{5.0f}};
+  Mat2 b{{4.0f},{2.0f},{3.0f},{5.0f}};
+  float result1=a.det();
+  float result2=b.det();
+  REQUIRE(result1==13.0f);
+  REQUIRE(result2==14.0f);
+ }
+ TEST_CASE("describe_operatorM*V","[operatorM*V]")
+{ Mat2 a{{3.0f},{2.0f},{1.0f},{5.0f}};
+  Vec2 b{{3.0f},{2.0f}};
+  Vec2 result{operator*(a,b)};
+  REQUIRE(result.x_==13.0f);
+  REQUIRE(result.y_==13.0f);
+}
+ TEST_CASE("describe_operatorV*M","[operatorV*M]")
+{ Mat2 a{{3.0f},{2.0f},{1.0f},{5.0f}};
+  Vec2 b{{3.0f},{2.0f}};
+  Vec2 result{operator*(b,a)};
+  REQUIRE(result.x_==3.0f);
+  REQUIRE(result.y_==2.0f);
+}
+ TEST_CASE("describe_inverse","[inverse]")
+{ Mat2 a{{3.0f},{2.0f},{1.0f},{5.0f}};
+  Mat2 b{{4.0f},{2.0f},{3.0f},{5.0f}};
+  Mat2 result1{inverse(a)};
+  Mat2 result2{inverse(b)};
+  REQUIRE(result1.x1==Approx(0.3846f).epsilon(0.01));
+  REQUIRE(result1.x2==Approx(-0.07692f).epsilon(0.01));
+  REQUIRE(result1.y1==Approx(-0.1538f).epsilon(0.01));
+  REQUIRE(result1.y2==Approx(0.23016f).epsilon(0.01));
+  REQUIRE(result2.x1==Approx(0.357f).epsilon(0.01));
+  REQUIRE(result2.x2==Approx(-0.2142f).epsilon(0.01));
+  REQUIRE(result2.y1==Approx(-0.1428f).epsilon(0.01));
+  REQUIRE(result2.y2==Approx(0.2857f).epsilon(0.01));
+}
+ TEST_CASE("describe_transponse","[transponse]")
+{ Mat2 a{{3.0f},{2.0f},{1.0f},{5.0f}};
+  Mat2 b{{4.0f},{2.0f},{3.0f},{5.0f}};
+  Mat2 result1{transpose(a)};
+  Mat2 result2{transpose(b)};
+  REQUIRE(result1.x1==3.0f);
+  REQUIRE(result1.x2==1.0f);
+  REQUIRE(result1.y1==2.0f);
+  REQUIRE(result1.y2==5.0f);
+  REQUIRE(result2.x1==4.0f);
+  REQUIRE(result2.x2==3.0f);
+  REQUIRE(result2.y1==2.0f);
+  REQUIRE(result2.y2==5.0f);
+}
+ 
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
