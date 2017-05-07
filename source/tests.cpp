@@ -257,20 +257,28 @@ TEST_CASE("describe_circle","[circle]")
 { Circle a{};
   Vec2 b{{4.0f},{2.0f}};
   float r=2.0f;
-  Circle c{b,r};
+  Color x{{0.1f},{0.2f},{0.3f}};
+  Circle c{b,r,x};
   REQUIRE(a.getCenter().x_==0.0f);
   REQUIRE(a.getCenter().y_==0.0f);
   REQUIRE(a.getRadius()==0.0f);
+  REQUIRE(a.getColorC().r==0.0f);
+  REQUIRE(a.getColorC().g==0.0f);
+  REQUIRE(a.getColorC().b==0.0f);
   REQUIRE(c.getCenter().x_==4.0f);
   REQUIRE(c.getCenter().y_==2.0f);
   REQUIRE(c.getRadius()==2.0f);
   REQUIRE(c.circumfrenceC()==Approx(12.566f).epsilon(0.01));
+  REQUIRE(c.getColorC().r==0.1f);
+  REQUIRE(c.getColorC().g==0.2f);
+  REQUIRE(c.getColorC().b==0.3f);
 }
 TEST_CASE("describe_rectangle","[rectangle]")
 { Rectangle a{};
   Vec2 b{{4.0f},{2.0f}};
   Vec2 c{{6.0f},{8.0f}};
-  Rectangle d{b,c};
+  Color x{{0.1f},{0.2f},{0.3f}};
+  Rectangle d{b,c,x};
   REQUIRE(a.getMin_().x_==0.0f);
   REQUIRE(a.getMin_().y_==0.0f);
   REQUIRE(a.getMax_().x_==0.0f);
@@ -279,6 +287,9 @@ TEST_CASE("describe_rectangle","[rectangle]")
   REQUIRE(a.getBottomright_().y_==0.0f);
   REQUIRE(a.getTopleft_().x_==0.0f);
   REQUIRE(a.getTopleft_().y_==0.0f);
+  REQUIRE(a.getColorR().r==0.0f);
+  REQUIRE(a.getColorR().g==0.0f);
+  REQUIRE(a.getColorR().b==0.0f);
   REQUIRE(d.getMin_().x_==4.0f);
   REQUIRE(d.getMin_().y_==2.0f);
   REQUIRE(d.getMax_().x_==6.0f);
@@ -288,9 +299,12 @@ TEST_CASE("describe_rectangle","[rectangle]")
   REQUIRE(d.getTopleft_().x_==4.0f);
   REQUIRE(d.getTopleft_().y_==8.0f);
   REQUIRE(d.circumfrenceR()==16.0f);
+  REQUIRE(d.getColorR().r==0.1f);
+  REQUIRE(d.getColorR().g==0.2f);
+  REQUIRE(d.getColorR().b==0.3f);
 }
  
-int main(int argc, char *argv[])
-{
-  return Catch::Session().run(argc, argv);
-}
+//int main(int argc, char *argv[])
+//{
+  //return Catch::Session().run(argc, argv);
+//}

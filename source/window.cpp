@@ -20,6 +20,10 @@
 #include <iostream>
 #include <cassert>
 #include <exception>
+#include "circle.hpp"
+#include "rectangle.hpp"
+#include "vec2.hpp"
+#include "mat2.hpp"
 
 namespace {
 void errorcb(int error, const char* desc)
