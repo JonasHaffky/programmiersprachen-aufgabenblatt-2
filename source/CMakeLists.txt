@@ -27,6 +27,11 @@ color.cpp
 circle.cpp 
 rectangle.cpp)
 target_link_libraries(tests
-  ${GLFW_LIBRARIES})
+glfw
+  ${GLFW_LIBRARIES}
+nanovg
+  ${OPENGL_LIBRARIES})
+
+
 
 
