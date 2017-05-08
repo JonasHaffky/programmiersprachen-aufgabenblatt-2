@@ -82,7 +82,7 @@ TEST_CASE("describe_operator+","[operator+]")
   Vec2 b{{4.0f},{0.0f}};
   Vec2 c{{6.8f},{0.5f}};
   Vec2 d{{0.7f},{4.8f}};
-  Vec2 temp_1{operator+(a,b)};
+  Vec2 temp_1 = a + b;
   Vec2 temp_2{operator+(b,c)};
   Vec2 temp_3{operator+(d,a)};
   REQUIRE(temp_1.x_==9.0f);
@@ -304,7 +304,7 @@ TEST_CASE("describe_rectangle","[rectangle]")
   REQUIRE(d.getColorR().b==0.3f);
 }
  
-//int main(int argc, char *argv[])
-//{
-  //return Catch::Session().run(argc, argv);
-//}
+int main(int argc, char *argv[])
+{
+  return Catch::Session().run(argc, argv);
+}

@@ -42,10 +42,9 @@ Vec2& Vec2::operator/=(float s){
    }
 }
 Vec2 operator+( Vec2 const & u , Vec2 const & v ){
-    float x=u.x_+v.x_;
-    float y=u.y_+v.y_;
-    Vec2 temp{{x},{y}};
-    return temp;
+    Vec2 tmp{u};
+    tmp += v;
+    return tmp;
 }
 Vec2 operator-( Vec2 const & u , Vec2 const & v ){
     float x=u.x_-v.x_;
