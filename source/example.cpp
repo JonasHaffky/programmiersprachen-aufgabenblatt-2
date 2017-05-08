@@ -11,14 +11,15 @@ int main(int argc, char* argv[])
 {
   Window win{std::make_pair(800,800)};
   Vec2 testcircle_center(300.0f,300.0f);
-  Color schwarz{0.0f};
-  Circle testcircle(testcircle_center,100.0f,schwarz);
+  Color rot{{1.0f},{0.0f},{0.0f}};
+  Color blau{{0.0f},{0.0f},{1.0f}};
+  Circle testcircle(testcircle_center,100.0f,rot);
   Vec2 test_rec1{400.0f, 200.0f};
   Vec2 test_rec2{600.0f, 800.0f};
-  Rectangle test_rec(test_rec1,test_rec2, schwarz);
+  Rectangle test_rec(test_rec1,test_rec2, blau);
   while (!win.should_close()) {
-    testcircle.draw(win);
-    test_rec.draw(win);
+    testcircle.draw(win, rot);
+    test_rec.draw(win, blau);
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
       win.close();
     }

@@ -29,6 +29,9 @@
         canvas.draw_line(max_.x_,max_.y_,bottomright_.x_,bottomright_.y_,0.0f,0.0f,0.0f);
         canvas.draw_line(max_.x_,max_.y_,topleft_.x_,topleft_.y_,0.0f,0.0f,0.0f);
     }
-    //void Rectangle:: draw(Window const& canvas, Color const& clr) const{
-
-    //}    
+    void Rectangle:: draw(Window const& canvas, Color const& clr) const{
+        canvas.draw_line(min_.x_,min_.y_,bottomright_.x_,bottomright_.y_,clr.r,clr.g,clr.b);
+        canvas.draw_line(min_.x_,min_.y_,topleft_.x_,topleft_.y_,clr.r,clr.g,clr.b);
+        canvas.draw_line(max_.x_,max_.y_,bottomright_.x_,bottomright_.y_,clr.r,clr.g,clr.b);
+        canvas.draw_line(max_.x_,max_.y_,topleft_.x_,topleft_.y_,clr.r,clr.g,clr.b);
+    }    

@@ -37,6 +37,14 @@
         canvas.draw_line(center_.x_-radius_,center_.y_+radius_ /2,center_.x_-radius_,center_.y_-radius_ /2,0.0f,0.0f,0.0f);
         canvas.draw_line(center_.x_-radius_,center_.y_-radius_ /2,center_.x_-radius_ /2,center_.y_-radius_,0.0f,0.0f,0.0f);
     }
-    //void Circle:: draw(Window const& canvas, Color const& clr) const{
-
-    //}
+    void Circle:: draw(Window const& canvas, Color const& clr) const{
+        canvas.draw_point(getCenter().x_,getCenter().y_,clr.r,clr.g,clr.b);
+        canvas.draw_line(center_.x_-radius_ /2,center_.y_-radius_,center_.x_+radius_ /2,center_.y_-radius_,clr.r,clr.g,clr.b);
+        canvas.draw_line(center_.x_+radius_ /2,center_.y_-radius_,center_.x_+radius_,center_.y_-radius_ /2,clr.r,clr.g,clr.b);
+        canvas.draw_line(center_.x_+radius_,center_.y_-radius_ /2,center_.x_+radius_,center_.y_+radius_ /2,clr.r,clr.g,clr.b);
+        canvas.draw_line(center_.x_+radius_,center_.y_+radius_ /2,center_.x_+radius_ /2,center_.y_+radius_,clr.r,clr.g,clr.b);
+        canvas.draw_line(center_.x_+radius_ /2,center_.y_+radius_,center_.x_-radius_ /2,center_.y_+radius_,clr.r,clr.g,clr.b);
+        canvas.draw_line(center_.x_-radius_ /2,center_.y_+radius_,center_.x_-radius_,center_.y_+radius_ /2,clr.r,clr.g,clr.b);
+        canvas.draw_line(center_.x_-radius_,center_.y_+radius_ /2,center_.x_-radius_,center_.y_-radius_ /2,clr.r,clr.g,clr.b);
+        canvas.draw_line(center_.x_-radius_,center_.y_-radius_ /2,center_.x_-radius_ /2,center_.y_-radius_,clr.r,clr.g,clr.b);
+    }
